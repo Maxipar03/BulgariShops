@@ -1,1 +1,32 @@
-[{"id":"10dd8121-2b68-475b-942f-35023d6ebe3d","status":true,"title":"Teclado Mecánico","description":"Teclado mecánico RGB con switches Red","code":"KEY789","price":80,"stock":15,"category":"Accessories"}]
+[
+    {
+        "id": "9df29106-6c1b-4329-9fcf-bdb864cf57ee",
+        "status": true,
+        "price": "242234",
+        "description": "sfsfdsf",
+        "stock": "2424",
+        "title": "sfsfsefsf",
+        "category": "sfsfsfsdfs",
+        "code": "sfsfdsfsf"
+    },
+    {
+        "id": "eca8d001-332c-4e76-8417-b2b5ebf1f97b",
+        "status": true,
+        "price": "1312231",
+        "description": "adada",
+        "stock": "123131",
+        "title": "adadawd",
+        "category": "adadadwad",
+        "code": "1231321"
+    },
+    {
+        "id": "f82b5a7b-7143-455c-8171-6382d641dd92",
+        "status": true,
+        "price": "123131",
+        "description": "1313123",
+        "stock": "1312312312",
+        "title": "adadawd",
+        "category": "adawdawda",
+        "code": "dadawdadaw"
+    }
+]
