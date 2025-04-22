@@ -7,6 +7,7 @@ class CartService {
         this.dao = dao;
     }
 
+    // Servicio para añadir productos al carrito
     addProductsCart = async(id, products) => {
         try{
             const cart = await this.dao.addProductsCart(id, products)
@@ -16,6 +17,7 @@ class CartService {
         }
     }
 
+    // Servicio para modificar cantidad de producto dentro del carrito
     modQuantity = async(id, pid, quantity) => {
         try{
             const cart = await this.dao.modQuantity(id, pid, quantity)
@@ -25,6 +27,7 @@ class CartService {
         }
     } 
 
+    // Servicio para eliminar producto del carrito
     deleteProdCart = async(id, pid, quantity) => {
         try{
             const cart = await this.dao.deleteProdCart(id, pid, quantity)
@@ -34,6 +37,7 @@ class CartService {
         }
     } 
 
+    // Servicio para eliminar carrito
     deleteAllProdCart = async(id) => {
         try{
             const cart = await this.dao.deleteAllProdCart(id)
@@ -43,6 +47,7 @@ class CartService {
         }
     }
 
+    // Servicio para crear carrito vacio []
     createCartEmpty= async() => {
         try{
             return await this.dao.createCartEmpty();
@@ -51,7 +56,7 @@ class CartService {
         }
     } 
 
-
+    // Servicio para obtener carrito por ID
     getCartById = async(id) => {
         try{
             const cart = await this.dao.getCartById(id)

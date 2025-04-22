@@ -7,9 +7,7 @@ import { initMongoDB } from "./daos/mongodb/connection.js";
 import path from 'path'
 import express from "express";
 import handlebars from "express-handlebars";
-import { Server } from "socket.io";
 import morgan from "morgan";
-
 
 const app = express();
 const PORT = 8080;
@@ -18,7 +16,13 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static(path.join(`${process.cwd()}/src/public`)));
 
-app.engine("handlebars", handlebars.engine());
+app.engine("handlebars", handlebars.engine({
+    runtimeOptions: {
+        allowProtoPropertiesByDefault: true,
+        allowProtoMethodsByDefault: true,
+    }
+}));
+
 app.set("views", path.join(`${process.cwd()}/src/views`));
 app.set("view engine", "handlebars");
 
@@ -26,11 +30,11 @@ app.use(morgan('dev'));
 
 app.use('/products', productRouter);
 app.use('/users', userRouter);
-app.use('/carts', cartRouter );
+app.use('/carts', cartRouter);
 
 app.use(errorHandler);
 
-const httpServer = app.listen(PORT, () => {
+app.listen(PORT, () => {
     console.log(`Servidor corriendo en http://localhost:${PORT}`);
 })
 
@@ -38,6 +42,5 @@ initMongoDB()
     .then(() => console.log("Base de datos Mongo conectada"))
     .catch((error) => console.log(error));
 
-const socketServer = new Server(httpServer);
 
 

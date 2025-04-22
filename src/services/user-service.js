@@ -7,6 +7,7 @@ class UserService {
         this.dao = dao;
     }
 
+    // Servicio para obtener usuarios
     getAll = async () => {
         try {
             return await this.dao.getAll();
@@ -15,6 +16,7 @@ class UserService {
         }
     }
 
+    // Servicio para obtener usuario por ID
     getById = async (id) => {
         try {
             const user = await this.dao.getById(id);
@@ -25,6 +27,7 @@ class UserService {
         }
     }
 
+    // Servicio para crear usuario
     create = async (user) => {
         try {
             const newUser = await this.dao.create(user);
@@ -35,6 +38,7 @@ class UserService {
         }
     }
 
+    // Servicio para actualizar usuario
     update = async (id, obj) => {
         try {
             const userUpd = await this.dao.update(id, obj);
@@ -45,6 +49,7 @@ class UserService {
         }
     }
 
+    // Servicio para eliminar usuario
     delete = async (id) => {
         try {
             const userDel = await this.dao.delete(id);

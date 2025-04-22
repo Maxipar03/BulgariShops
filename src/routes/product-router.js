@@ -3,11 +3,15 @@ import { productController } from "../controllers/product-controller.js";
 
 const router = Router();
 
-router.get("/", productController.getAll);
-router.get("/:id", productController.getById);
-router.post("/", productController.create);
-router.put("/:id", productController.update);
-router.delete("/:id", productController.delete);
+router.get("/", productController.getAll); // Ruta para obtener todos los productos
+
+router.get("/:id", productController.getById); // Ruta para obtener todos producto por ID
+
+router.post("/", productController.create); // Ruta para crear productos
+
+router.put("/:id", productController.update); // Ruta para actualizar producto
+
+router.delete("/:id", productController.delete); // Ruta para eliminar producto
 
 
 

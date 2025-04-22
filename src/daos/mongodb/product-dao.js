@@ -6,6 +6,7 @@ class ProductDaoMongo extends MongoDao {
         super(model);
     }
     
+    // Obtener todos los productos
     getAllProducts = async(page = 1, limit = 10, name, sort) =>{
         try{
             const filter = name ? {"name" : name} : {};
@@ -19,6 +20,7 @@ class ProductDaoMongo extends MongoDao {
         }
     }; 
 
+    // Obtener producto por nombre
     getByName = async (name) => {
         try {
             return await this.model.find({ name });

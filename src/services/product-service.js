@@ -7,6 +7,7 @@ class ProductService {
         this.dao = dao;
     }
 
+    // Servicio para obtener todos los productos
     getAll = async (page, limit, name, sort) => {
         try {
             return await this.dao.getAllProducts(page, limit, name, sort);
@@ -15,6 +16,7 @@ class ProductService {
         }
     }
 
+    // Servicio para obtener producto por ID
     getById = async (id) => {
         try {
             const product = await this.dao.getById(id);
@@ -25,6 +27,7 @@ class ProductService {
         }
     }
 
+    // Servicio para crear producto
     create = async (product) => {
         try {
             const newProd = await this.dao.create(product);
@@ -35,6 +38,7 @@ class ProductService {
         }
     }
 
+    // Servicio para actualizar producto
     update = async (id, obj) => {
         try {
             const prodUpd = await this.dao.update(id, obj);
@@ -45,6 +49,7 @@ class ProductService {
         }
     }
 
+    // Servicio para eliminar producto
     delete = async (id) => {
         try {
             const prodDel = await this.dao.delete(id);

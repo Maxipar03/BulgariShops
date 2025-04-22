@@ -1,3 +1,5 @@
+// Validacion de usuario al crearlo
+
 export const userValidator = (req, res, next) => {
     if (
         req.body.email === undefined ||
@@ -13,6 +15,8 @@ export const userValidator = (req, res, next) => {
     return next();
 
 }
+
+// Validacion de rol de usuario
 
 export const userRoleValidate = (req, res, next) => {
     const role = req.headers["user-role"];

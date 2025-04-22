@@ -19,17 +19,22 @@ class ProductController {
                 ? `http://localhost:8080/users/all?page=${response.prevPage}`
                 : null;
 
-            res.json({
-                results: response.docs,
-                info: {
-                    status: response.status,
-                    count: response.totalDocs,
-                    pages: response.totalPages,
-                    next,
-                    prev,
-                },
-            });
-            res.status(200).json(response);
+            res.render("products", {products: response.docs });
+            
+
+            // Codigo para transformar la vista en una API
+
+            // res.status(200).json({
+            //     results: response.docs,
+            //     info: {
+            //         status: response.status,
+            //         count: response.totalDocs,
+            //         pages: response.totalPages,
+            //         next,
+            //         prev,
+            //     },
+            // });
+
         } catch (error) {
             next(error);
         }

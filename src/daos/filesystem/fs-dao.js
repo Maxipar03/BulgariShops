@@ -47,7 +47,6 @@ export default class FSDao {
         }
     }
 
-
     async update(id, updatedObj) {
         try{
             const items = await this.getAll();

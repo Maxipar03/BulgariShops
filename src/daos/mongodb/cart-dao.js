@@ -7,6 +7,7 @@ class CartDaoMongo extends MongoDao {
         super(model);
     }
     
+    // Crear carrito vacio []
     createCartEmpty = async() => {
         try{
             return await this.model.create({ product: [] });
@@ -15,6 +16,7 @@ class CartDaoMongo extends MongoDao {
         }
     };
 
+    // Añadir productos al carrito
     addProductsCart = async(id, products) => {
         try{
             const cart = await this.model.findById(id);
@@ -26,6 +28,7 @@ class CartDaoMongo extends MongoDao {
         }
     };
 
+    // Actualizar cantidad de producto en el carrito
     modQuantity = async(id, pid, quantity) => {
         try{
             const cart = await this.model.findById(id);
@@ -41,6 +44,7 @@ class CartDaoMongo extends MongoDao {
         }
     }
 
+    // Eliminar producto de carrito
     deleteProdCart = async(id, pid, quantity) => {
         try{
             const cart = await this.model.findById(id);
@@ -56,6 +60,7 @@ class CartDaoMongo extends MongoDao {
         }
     }
 
+    // Eliminar carrito
     deleteAllProdCart = async(id) => {
         try{
             const cart = await this.model.findById(id);
@@ -67,6 +72,7 @@ class CartDaoMongo extends MongoDao {
         }
     };
 
+    // Obtener carrito por ID
     getCartById = async(id) =>{
         try{
             return await this.model.findById(id).populate("products.product");

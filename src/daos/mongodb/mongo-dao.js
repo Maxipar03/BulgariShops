@@ -3,6 +3,7 @@ export default class MongoDao {
         this.model = model;
     }
 
+    // Obtener todo
     getAll = async () => {
         try {
             return await this.model.find();
@@ -11,6 +12,7 @@ export default class MongoDao {
         }
     };
 
+    // Obtener por ID
     getById = async (id) => {
         try {
             return await this.model.findById(id);
@@ -19,6 +21,7 @@ export default class MongoDao {
         }
     };
 
+    // Crear
     create = async (product) => {
         try {
             return await this.model.create(product);
@@ -27,6 +30,7 @@ export default class MongoDao {
         }
     };
 
+    // Actualizar
     update = async (id, obj) => {
         try {
             return await this.model.findByIdAndUpdate(id, obj, { new: true });
@@ -35,6 +39,7 @@ export default class MongoDao {
         }
     };
 
+    // Eliminar
     delete = async (id) => {
         try {
             return await this.model.findByIdAndDelete(id);

@@ -1,3 +1,5 @@
+// Hasheo de contraseña
+
 import {createHmac, randomBytes} from 'node:crypto';
 
 export const createHash = (user) => {
