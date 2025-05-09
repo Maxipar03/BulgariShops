@@ -1,10 +1,11 @@
 // Hasheo de contraseña
 
-import {createHmac, randomBytes} from 'node:crypto';
+import bcrypt from "bcrypt";
 
-export const createHash = (user) => {
-    user.secretKey = randomBytes(128).toString();
-    user.password = createHmac("sha256", user.secretKey)
-        .update(user.password)
-        .digest("hex");
+export const createHash = (password) => {
+    return bcrypt.hashSync(password, bcrypt.genSaltSync(10));
 }
+
+export const isValidPassword = (passwordPlain, passwordHash) => {
+    return bcrypt.compareSync(passwordPlain, passwordHash);
+};

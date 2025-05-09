@@ -16,18 +16,27 @@ const UserSchema = new Schema({
         required: true,
         unique: true,
     },
-    gender: {
+    password: {
         type: String,
         required: true,
     },
     age: {
         type: Number,
         required: true,
+    },
+    cart: {
+        type: Schema.Types.ObjectId,
+        ref: "cart",
+        default: null
+    },
+    role: {
+        type: String,
+        default: "User",
     }
 });
 
 UserSchema.pre('find', function () {
-    this.populate('cart');
+    this.populate('carts');
 });
 
 UserSchema.plugin(mongoosePaginate);

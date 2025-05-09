@@ -3,58 +3,44 @@ import { userService } from "../services/user-service.js";
 class UserController {
     constructor(service) {
         this.service = service;
+    };
+
+    register = async (req, res, next) => {
+        try {
+            const response = await this.service.register(req.body);
+            console.log(response)
+            res.json(response);
+        } catch (error) {
+            next(error);
+        }
+    };
+
+    login = async (req, res, next) => {
+        try {
+            const { email, password } = req.body;
+            const user = await this.service.login(email, password);
+            const token = this.service.generateToken(user);
+            res
+                .cookie("token", token, { httpOnly: true })
+                .json({ message: "Login OK!" });
+        } catch (error) {
+            next(error);
+        }
+    };
+
+    renderLogin = async (req, res, next) => {
+        try {
+            res.render('login');
+        } catch (error) {
+            next(error)
+        }
     }
 
-    //Controlador para obtener todos los usuarios
-    getAll = async (req, res, next) => {
+    profile = async (req, res, next) => {
         try {
-            const response = await this.service.getAll();
-            res.status(200).json(response);
+            res.render('current', { user: req.user })
         } catch (error) {
-            next(error);
-        }
-    };
-
-    //Controlador para obtener usuarios por ID
-    getById = async (req, res, next) => {
-        try {
-            const { id } = req.params;
-            const user = await this.service.getById(id);
-            res.status(200).json(user);
-        } catch (error) {
-            next(error);
-        }
-    };
-
-    //Controlador para crear usuarios
-    create = async (req, res, next) => {
-        try {
-            const newUser = await this.service.create(req.body);
-            res.json(newUser);
-        } catch (error) {
-            next(error);
-        }
-    };
-
-    //Controlador para actualizar usuarios
-    update = async (req, res, next) => {
-        try {
-            const { id } = req.params;
-            const userUpd = await this.service.update(id, req.body);
-            res.status(200).json(userUpd);
-        } catch (error) {
-            next(error);
-        }
-    };
-
-    //Controlador para eliminar usuarios
-    delete = async (req, res, next) => {
-        try {
-            const { id } = req.params;
-            const userDel = await this.service.delete(id);
-            res.status(200).json(userDel);
-        } catch (error) {
-            next(error);
+            next(error)
         }
     };
 }

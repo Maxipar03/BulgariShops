@@ -1,18 +1,15 @@
 import { Router } from "express";
 import { userController } from "../controllers/user-controller.js";
+import { passportCall } from "../middlewares/passportCall.js";
 
 const router = Router();
 
-router.get("/", userController.getAll); // Ruta para obtener todos los usuarios
+router.post("/register", userController.register);
 
-router.get("/:id", userController.getById); // Ruta para obtener usuarios por ID
+router.post("/login", userController.login);
 
-router.post("/", userController.create);  // Ruta para crear usuario
+router.get("/login/form", userController.renderLogin);
 
-router.put("/:id", userController.update); // Ruta para actualizar usuario
-
-router.delete("/:id", userController.delete); // Ruta para eliminar usuario
-
-
+router.get("/private-cookies", passportCall("jwtCookies"), userController.profile);
 
 export default router;
